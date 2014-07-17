@@ -7,18 +7,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Pessoa.porNome", query = "SELECT p FROM Pessoa p WHERE LIKE :nome ORDER BY p.nome")
+})
 public class Pessoa implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
     private String telefone;
     private String celular;
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date nascimento;
     private String email;
@@ -26,86 +31,6 @@ public class Pessoa implements Serializable {
     private String bairro;
     private String cep;
     private String cidade;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long var) {
-        this.id = var;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String var) {
-        this.nome = var;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String var) {
-        this.telefone = var;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String var) {
-        this.celular = var;
-    }
-
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date var) {
-        this.nascimento = var;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String var) {
-        this.email = var;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String var) {
-        this.endereco = var;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String var) {
-        this.bairro = var;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String var) {
-        this.cep = var;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String var) {
-        this.cidade = var;
-    }
 
     @Override
     public int hashCode() {
@@ -168,6 +93,86 @@ public class Pessoa implements Serializable {
     @Override
     public String toString() {
         return "com.model.Pessoa[ id=" + id + " ]";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
 }

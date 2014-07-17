@@ -1,13 +1,12 @@
 package com.dao;
 
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
-
-public class DAO<T>{
+public class DAO<T> {
 
     private final Class<T> classe;
 
@@ -96,6 +95,19 @@ public class DAO<T>{
                 .setMaxResults(maxResults).getResultList();
 
         em.close();
+        return lista;
+    }
+
+    public List<T> buscaPorQuery(String nomeQuery, String parametro, String pValor) {
+        EntityManager em = new JPAUtil().getEntityManager();
+        List<T> lista;
+        try {
+            Query query = em.createNamedQuery(nomeQuery);
+            query.setParameter(parametro, pValor);
+            lista = query.getResultList();
+        } finally {
+            em.close();
+        }
         return lista;
     }
 

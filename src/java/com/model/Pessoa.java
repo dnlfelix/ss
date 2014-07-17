@@ -19,7 +19,6 @@ public class Pessoa implements Serializable {
     private String nome;
     private String telefone;
     private String celular;
-    private String assunto;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date nascimento;
     private String email;
@@ -58,14 +57,6 @@ public class Pessoa implements Serializable {
 
     public void setCelular(String var) {
         this.celular = var;
-    }
-
-    public String getAssunto() {
-        return assunto;
-    }
-
-    public void setAssunto(String var) {
-        this.assunto = var;
     }
 
     public Date getNascimento() {
@@ -123,7 +114,6 @@ public class Pessoa implements Serializable {
         hash = 17 * hash + Objects.hashCode(this.nome);
         hash = 17 * hash + Objects.hashCode(this.telefone);
         hash = 17 * hash + Objects.hashCode(this.celular);
-        hash = 17 * hash + Objects.hashCode(this.assunto);
         hash = 17 * hash + Objects.hashCode(this.nascimento);
         hash = 17 * hash + Objects.hashCode(this.email);
         hash = 17 * hash + Objects.hashCode(this.endereco);
@@ -152,9 +142,6 @@ public class Pessoa implements Serializable {
             return false;
         }
         if (!Objects.equals(this.celular, other.celular)) {
-            return false;
-        }
-        if (!Objects.equals(this.assunto, other.assunto)) {
             return false;
         }
         if (!Objects.equals(this.nascimento, other.nascimento)) {

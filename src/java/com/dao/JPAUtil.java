@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 public class JPAUtil {
 
 	private static final EntityManagerFactory emf = Persistence
-			.createEntityManagerFactory("corretPU");
+			.createEntityManagerFactory("sandrosocialPU");
 
 	public EntityManager getEntityManager() {
 		return emf.createEntityManager();
